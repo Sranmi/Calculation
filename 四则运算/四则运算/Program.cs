@@ -16,29 +16,19 @@ namespace 四则运算
             int r = 10;
             int n = 1;
             int[] result = new int[2];
-            Console.WriteLine("请输入参数及相应的内容\n-n 输入生成题目的数量\n-r 输入题目中数值的范围");
-            string[] nn = Console.ReadLine().Split(' ');
-            while (nn[0] != "-n" || nn[0] != "-r")
+            Console.WriteLine("请输入生成题目的数量");
+            string nn = Console.ReadLine();
+            while (int.TryParse(nn, out n) == false)
             {
-                Console.WriteLine("参数输入有误，请重新输入");
-                nn = Console.ReadLine().Split(' ');
+                Console.WriteLine("输入有误，请重新输入数字");
+                nn = Console.ReadLine();
             }
-            switch (nn[0])
+            Console.WriteLine("请输入题目中数值的范围");
+            nn = Console.ReadLine();
+            while (int.TryParse(nn, out r) == false)
             {
-                case "-n":
-                    while (int.TryParse(nn[1], out n) == false)
-                    {
-                        Console.WriteLine("输入有误，请重新输入数字");
-                        nn[1] = Console.ReadLine();
-                    }
-                    break;
-                case "-r":
-                    while (int.TryParse(nn[1], out r) == false)
-                    {
-                        Console.WriteLine("输入有误，请重新输入数字");
-                        nn[1] = Console.ReadLine();
-                    }
-                    break;
+                Console.WriteLine("输入有误，请重新输入数字");
+                nn = Console.ReadLine();
             }
             calculation c = new calculation();
             int[][] ic = new int[n][];//n个计算式中计算数的和数
